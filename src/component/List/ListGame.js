@@ -39,12 +39,20 @@ function ListGame() {
         <Link to="/color-test" className="game-link">
         <img
             src="https://play-lh.googleusercontent.com/AcHFAoNerGDOI8DuIxbBFc1qXAVjE2q1_RYMZVhO5jQ1rgtKk7h2lQQFJe2Cje4NF3WC"
-            alt="TestColor Game"
+            alt="Test Color Game"
             className="game-image"
           />
           <div className="game-link-text">Test Color Game</div>
         </Link>
         
+        <Link to="/block-stacking" className="game-link">
+        <img
+            src="https://st.gamevui.com/images/image/2019/12/28/xep-gach-200.jpg"
+            alt="Block Stacking Game"
+            className="game-image"
+          />
+          <div className="game-link-text">Block Stacking Game</div>
+        </Link>
       </div>
     </div>
   );

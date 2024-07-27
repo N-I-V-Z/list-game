@@ -4,7 +4,7 @@ import axios from "axios";
 import { message } from "antd";
 import "./CaroGame.css";
 import config from "../../config/config";
-
+import { useNavigate } from 'react-router-dom';
 // Khởi tạo kết nối Socket.IO
 const socket = io(`${config.API_ROOT}`);
 
@@ -74,7 +74,7 @@ function CaroGameBoard() {
       socket.off("replayAccepted");
     };
   }, []);
-
+  const navigate = useNavigate();
   // Tham gia vào phòng game
   const handleJoin = (roomName) => {
     if (!roomName && !room) {
@@ -185,11 +185,16 @@ function CaroGameBoard() {
     socket.emit("acceptReplay");
     setReplayRequest(false);
   };
+  
+  const handleClickk = () => {
+    navigate('/');
+  };
 
   return (
     <div className="game-container">
       {!roomFull ? (
         <div className="choose-room">
+          <button onClick={handleClickk} className="navigate-button">Home</button>
           <h2>Choose or Create a Room</h2>
           <input
             type="text"

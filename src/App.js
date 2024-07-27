@@ -6,6 +6,7 @@ import ListGame from "./component/List/ListGame";
 import SnakeGame from "./component/SnakeGame/SnakeGame";
 import CaroGame5 from "./component/CaroGame5/CaroGame";
 import ColorTest from "./component/ColorTest/ColorTest";
+import BlockStackingGame from "./component/Block Stacking Game/BlockStackingGame";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/snake-game" element={<SnakeGame />} />
           <Route path="/caro-game-5" element={<CaroGame5 />} />
           <Route path="/color-test" element={<ColorTest />} />
+          <Route path="/block-stacking" element={<BlockStackingGame />} />
         </Routes>
       </div>
     </Router>

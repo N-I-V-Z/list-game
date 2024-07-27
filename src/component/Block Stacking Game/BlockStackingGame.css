@@ -1,0 +1,153 @@
+.block-stacking-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .block-stacking-grid {
+    display: grid;
+    grid-template-rows: repeat(20, 20px);
+    grid-template-columns: repeat(10, 20px);
+    gap: 1px;
+    margin-bottom: 20px;
+  }
+  
+  .block-stacking-row {
+    display: contents;
+  }
+  
+  .block-stacking-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .block-stacking-cell.red {
+    background-color: red;
+  }
+  
+  .block-stacking-cell.blue {
+    background-color: blue;
+  }
+  
+  .block-stacking-cell.green {
+    background-color: green;
+  }
+  
+  .block-stacking-cell.yellow {
+    background-color: yellow;
+  }
+  
+  .block-stacking-cell.purple {
+    background-color: purple;
+  }
+  
+  .block-stacking-cell.orange {
+    background-color: orange;
+  }
+  
+  .block-stacking-score {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .block-stacking-game-over {
+    font-size: 24px;
+    color: red;
+  }
+
+  /* Nút khởi động lại */
+.block-restart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.block-restart-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Nút quay về trang chọn game */
+.block-back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e67e22;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.block-back-button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+}
+
+/* Nút tạm dừng / tiếp tục trò chơi */
+.block-pause-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FFC107; /* Màu nền vàng cho nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.block-pause-button:hover {
+    background-color: #ffb300; /* Màu nền vàng đậm khi di chuột qua */
+}
+
+/* Hiệu ứng khi nhấn nút */
+.block-pause-button:active {
+    transform: scale(0.95); /* Hiệu ứng khi nhấn nút */
+}
+
+/* Nút bắt đầu trò chơi */
+.block-start-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.block-start-button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.05);
+}
+
+
+.block-stacking-game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
