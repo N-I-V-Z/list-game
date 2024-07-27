@@ -2,7 +2,7 @@
 
 ## Giới thiệu
 
-Đây là một dự án chứa các trò chơi đơn giản được xây dựng bằng ReactJS và Node.js. Dự án này bao gồm các trò chơi như Caro, Rắn Săn Mồi, Minesweeper và Test Color Game, được thiết kế để minh họa cách sử dụng các công nghệ này để phát triển ứng dụng web tương tác.
+Đây là một dự án chứa các trò chơi đơn giản được xây dựng bằng ReactJS và Node.js nhằm mục đích học hỏi rèn luyện thêm về ReactJs và Node.js. Dự án này bao gồm các trò chơi như Caro, Rắn Săn Mồi, Minesweeper và Test Color Game,... được thiết kế để minh họa cách sử dụng các công nghệ này để phát triển ứng dụng web tương tác.
 
 ## Các Trò Chơi
 
