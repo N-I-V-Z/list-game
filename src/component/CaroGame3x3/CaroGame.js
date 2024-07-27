@@ -4,6 +4,7 @@ import axios from "axios";
 import { message } from "antd";
 import "./CaroGame.css";
 import config from "../../config/config";
+import { useNavigate } from 'react-router-dom';
 
 // Khởi tạo kết nối Socket.IO
 const socket = io(`${config.API_ROOT}`);
@@ -60,7 +61,7 @@ function CaroGame() {
 
     socket.on("replayAccepted", () => {
       setBoard(Array(9).fill(null));
-      setWinner("");
+      setWinner("0");
       setCurrentPlayer("X");
       setShowReplay(false);
       setReplayRequest(false);
@@ -142,9 +143,13 @@ function CaroGame() {
     socket.emit("acceptReplay");
     setReplayRequest(false);
   };
-
+  const navigate = useNavigate();
+  const handleClickk = () => {
+    navigate('/');
+  };
   return (
     <div className="game-page">
+      <button onClick={handleClickk} className="navigate-button">Home</button>
       {!roomFull ? (
         <div className="choose-room">
           <h2>Choose or Create a Room</h2>
@@ -173,17 +178,15 @@ function CaroGame() {
         </div>
       ) : (
         <div className="game">
-          <div className="game-board">
-            <Board squares={board} onClick={(i) => handleClick(i)} />
-          </div>
           <div className="game-info">
             <div>
-              You: {player} Current Player: {currentPlayer}{" "}
-              {winner && winner === "Draw" ? <>Draw</> : <>Winner: {winner}</>}
+              You: {player} ,Current Player: {currentPlayer}{" "}
+              <br />
+              <p>{winner && winner === "Draw" ? <>Draw</> : <>Winner: {winner}</>}</p>
             </div>
             {showReplay && !replayRequest && (
               <div>
-                <button onClick={handleReplay}>Replay</button>
+                <button className='button-replay-caro' onClick={handleReplay}>Replay</button>
               </div>
             )}
             {replayRequest && (
@@ -193,6 +196,10 @@ function CaroGame() {
               </div>
             )}
           </div>
+          <div className="game-board">
+            <Board squares={board} onClick={(i) => handleClick(i)} />
+          </div>
+
         </div>
       )}
     </div>
@@ -204,7 +211,7 @@ function Board({ squares, onClick }) {
     <div className="board">
       {squares.map((square, index) => (
         <button key={index} className="square" onClick={() => onClick(index)}>
-          {square}
+          <span className="XO">{square}</span>
         </button>
       ))}
     </div>
