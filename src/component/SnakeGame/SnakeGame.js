@@ -90,11 +90,10 @@ const SnakeGame = () => {
         setShowGameOver(false); // Ẩn thông báo sau 5 giây
         restartGame(); // Khởi động lại trò chơi sau khi ẩn thông báo game over
       }, 5000);
-  
+
       return () => clearTimeout(timer);
     }
   }, [gameOver]);
-  
 
   const handleKeyPress = (event) => {
     switch (event.key) {
@@ -147,7 +146,9 @@ const SnakeGame = () => {
   const handleSpeedChange = (event) => {
     setSpeed(SPEED_OPTIONS[event.target.value]);
   };
-
+  const handleClickk = () => {
+    navigate("/");
+  };
   return (
     <div className="snake-game-container">
       {showGameOver && <div className="snake-game-over">Game Over</div>}
@@ -158,6 +159,9 @@ const SnakeGame = () => {
             alt="Snake Game"
             className="snake-start-image"
           />
+          <button onClick={handleClickk} className="navigate-button">
+            Home
+          </button>
           <button className="snake-start-button" onClick={startGame}>
             Start Game
           </button>

@@ -52,6 +52,15 @@ function ListGame() {
           />
           <div className="game-link-text">Mine Sweeper</div>
         </Link>
+
+        <Link to="/block-stacking" className="game-link">
+          <img
+            src="https://st.gamevui.com/images/image/2019/12/28/xep-gach-200.jpg"
+            alt="Block Stacking Game"
+            className="game-image"
+          />
+          <div className="game-link-text">Block Stacking Game</div>
+        </Link>
       </div>
     </div>
   );

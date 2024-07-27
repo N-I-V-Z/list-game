@@ -70,10 +70,32 @@
   margin-left: 60px;
   margin-bottom: 10px;
 }
+/* Nút Home */
 .navigate-button {
-  height: 60px;
-  width: 80px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Màu nền xanh dương */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
+/* Hiệu ứng khi di chuột qua nút Home */
+.navigate-button:hover {
+  background-color: #2980b9; /* Màu nền xanh đậm hơn khi di chuột qua */
+  transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
+}
+
+/* Hiệu ứng khi nhấn nút Home */
+.navigate-button:active {
+  transform: scale(0.95); /* Hiệu ứng khi nhấn nút */
+}
+
 .navigate-button2 {
   height: 60px;
   width: 80px;

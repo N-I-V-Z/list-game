@@ -1,5 +1,6 @@
 import { message } from "antd";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Hàm để chuyển đổi mã màu HEX sang RGB
 const hexToRgb = (hex) => {
@@ -38,12 +39,13 @@ function ColorTest() {
   const [selectedColor, setSelectedColor] = useState("#FFFFFF");
   const [highlightColor, setHighlightColor] = useState("#FFFFFF");
   const [diffColor, setDiffColor] = useState(100);
+  const navigate = useNavigate();
 
   // lấy số ngẫu nhiên trong khoảng từ 0 - length-1
   const getRandomIndex = (length) => {
     return Math.floor(Math.random() * length); // Math.random() sẽ trả ra từ [0, 1) theo số thực, sau đó nhân với length được truyền vào rồi làm tròn xuống bằng hàm Math.floor(), vì thế sẽ có thể lấy được ngẫu nhiên 1 index trong mảng.
   };
-
+  
   useEffect(() => {
     // hàm chọn 1 màu ngẫu nhiên trong danh sách
     const getRandomColor = () => {
@@ -75,12 +77,14 @@ function ColorTest() {
 
       if (col < 14) setCol(col + 1); // tránh vượt qua màn hình
 
-      if (diffColor > 50) { // khi độ thay đổi cao thì giảm nhiều hơn
+      if (diffColor > 50) {
+        // khi độ thay đổi cao thì giảm nhiều hơn
         setDiffColor(diffColor - 10);
-      }else if (diffColor > 10){
+      } else if (diffColor > 10) {
         setDiffColor(diffColor - 5);
       }
-      if (col === 13) { // win và đặt mảng về trạng thái đầu
+      if (col === 13) {
+        // win và đặt mảng về trạng thái đầu
         message.success(`You win`);
         setCol(2);
         setRow(2);
@@ -90,9 +94,17 @@ function ColorTest() {
     }
   };
 
+  const handleClickk = () => {
+    navigate("/");
+  };
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Choose the difference color</h1>
+      <h1 style={{ textAlign: "center" }}>
+        <button onClick={handleClickk} className="navigate-button">
+          Home
+        </button>
+        Choose the difference color
+      </h1>
       <div
         style={{
           display: "grid",
@@ -100,8 +112,7 @@ function ColorTest() {
           gap: "5px",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         {gridColors.map((color, index) => (
           <div
             key={index}
