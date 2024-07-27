@@ -1,4 +1,4 @@
-# Simple Games Project
+# List Game Project
 
 ## Giới thiệu
 
