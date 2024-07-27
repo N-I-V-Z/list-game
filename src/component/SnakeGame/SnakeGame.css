@@ -1,0 +1,185 @@
+/* Toàn bộ container của trò chơi */
+.snake-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+/* Bảng trò chơi */
+.snake-board {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 5px solid #333;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Đoạn của rắn */
+.snake-segment {
+    position: absolute;
+    width: 20px; /* Chiều rộng của đoạn rắn */
+    height: 20px; /* Chiều cao của đoạn rắn */
+    background-color: #2ecc71;
+    border: 2px solid #27ae60;
+    border-radius: 5px; /* Các góc bo tròn để tạo ra hình dáng rắn hơn */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Thực phẩm */
+.snake-food {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    border: 2px solid #c0392b;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Thông báo kết thúc trò chơi */
+.snake-game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Container của các nút điều khiển */
+.snake-controls-container {
+    display: flex;
+    flex-direction: row; /* Sắp xếp các nút theo hàng ngang */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-bottom: 20px; /* Khoảng cách giữa container nút và bảng trò chơi */
+}
+
+/* Nút khởi động lại */
+.snake-restart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.snake-restart-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Nút quay về trang chọn game */
+.snake-back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e67e22;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.snake-back-button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+}
+
+/* Nút tạm dừng / tiếp tục trò chơi */
+.snake-pause-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FFC107; /* Màu nền vàng cho nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.snake-pause-button:hover {
+    background-color: #ffb300; /* Màu nền vàng đậm khi di chuột qua */
+}
+
+/* Hiệu ứng khi nhấn nút */
+.snake-pause-button:active {
+    transform: scale(0.95); /* Hiệu ứng khi nhấn nút */
+}
+
+/* Container của nút bắt đầu trò chơi */
+.snake-start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hình ảnh trò chơi */
+.snake-start-image {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Nút bắt đầu trò chơi */
+.snake-start-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.snake-start-button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.05);
+}
+
+/* Thanh chọn tốc độ */
+.snake-speed-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa label và select */
+}
+
+/* Điều chỉnh cho thanh chọn tốc độ */
+.snake-speed-container label {
+    font-size: 16px;
+    color: #333;
+}
+
+.snake-speed-select {
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.snake-speed-select:focus {
+    outline: none;
+    border-color: #2980b9;
+}
