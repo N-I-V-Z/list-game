@@ -19,6 +19,11 @@
   font-weight: bold;
   cursor: pointer;
 }
+.XO {
+  background: linear-gradient(135deg, #f203c6, #ea00ff, #054cf0, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .board {
   display: flex;
@@ -54,4 +59,24 @@
 
 .choose-room li {
   margin: 5px 0;
+}
+.game-page {
+  height: 100%;
+}
+.button-replay-caro {
+  border-radius: 5%;
+  border: none;
+  height: 30px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+.navigate-button {
+  height: 60px;
+  width: 80px;
+}
+.navigate-button2 {
+  height: 60px;
+  width: 80px;
+  margin-top: 10px;
+  margin-right: 230px;
 }

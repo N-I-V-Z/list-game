@@ -26,6 +26,25 @@ function ListGame() {
           />
           <div className="game-link-text">Snake Game</div>
         </Link>
+
+        <Link to="/caro-game-5" className="game-link">
+        <img
+            src="https://play-lh.googleusercontent.com/DBUWup7Cl26mbtN81yz0pw9Wge5aNll4T3su6pOpoSYnFVx8TLMv9-P5S7QAKPuV6BA"
+            alt="Care Game 5"
+            className="game-image"
+          />
+          <div className="game-link-text">Caro Game 5</div>
+        </Link>
+
+        <Link to="/color-test" className="game-link">
+        <img
+            src="https://play-lh.googleusercontent.com/AcHFAoNerGDOI8DuIxbBFc1qXAVjE2q1_RYMZVhO5jQ1rgtKk7h2lQQFJe2Cje4NF3WC"
+            alt="TestColor Game"
+            className="game-image"
+          />
+          <div className="game-link-text">Test Color Game</div>
+        </Link>
+        
       </div>
     </div>
   );
