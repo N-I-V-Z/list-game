@@ -26,6 +26,10 @@ Minesweeper là một trò chơi cổ điển, nơi người chơi phải mở c
 
 Test Color Game là trò chơi đơn giản để kiểm tra khả năng phân biệt màu sắc. Người chơi cần tìm và chọn màu sắc đúng trong một lưới màu sắc.
 
+### 6. Block Game 
+
+Block Game là một trò chơi cổ điển với lối chơi đơn giản nhưng gây nghiện. Trong trò chơi này, người chơi cần xếp các khối hình vào các vị trí hợp lý để tạo thành các hàng hoặc cột hoàn chỉnh. Khi một hàng hoặc cột được hoàn thành, nó sẽ biến mất và người chơi sẽ được điểm. Mục tiêu là đạt điểm cao nhất có thể trước khi khối hình không còn đủ chỗ để xếp.
+
 ## Cài Đặt
 
 Để chạy dự án này trên máy của bạn, hãy làm theo các bước sau:
@@ -76,6 +80,7 @@ Dự án sẽ chạy trên cổng mặc định `localhost:5000`.
 - **Caro**: Trò chơi Caro với 5 vị trí liên tiếp là chiến thắng.
 - **Minesweeper**: Trò chơi mở ô mà không chạm phải mìn.
 - **Test Color Game**: Trò chơi kiểm tra khả năng phân biệt màu sắc.
+- **Block Game**: Trò chơi xếp hình.
 
 ## Cập Nhật
 
