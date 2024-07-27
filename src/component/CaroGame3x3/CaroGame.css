@@ -61,7 +61,7 @@
   margin: 5px 0;
 }
 .game-page {
-  background-color: rgb(165, 165, 165);
+  height: 100%;
 }
 .button-replay-caro {
   border-radius: 5%;
@@ -73,4 +73,10 @@
 .navigate-button {
   height: 60px;
   width: 80px;
+}
+.navigate-button2 {
+  height: 60px;
+  width: 80px;
+  margin-top: 10px;
+  margin-right: 230px;
 }
