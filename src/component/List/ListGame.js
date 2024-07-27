@@ -9,6 +9,9 @@ function ListGame() {
       <Link to="/caro-game-5">
         <div>Caro Game 5</div>
       </Link>
+      <Link to="/color-test">
+        <div>Color Test</div>
+      </Link>
     </div>
   );
 }
