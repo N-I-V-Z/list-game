@@ -6,6 +6,7 @@ import ListGame from "./component/List/ListGame";
 import SnakeGame from "./component/SnakeGame/SnakeGame";
 import CaroGame5 from "./component/CaroGame5/CaroGame";
 import ColorTest from "./component/ColorTest/ColorTest";
+import MineSweeper from "./component/MineSweeper/MineSweeper";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/snake-game" element={<SnakeGame />} />
           <Route path="/caro-game-5" element={<CaroGame5 />} />
           <Route path="/color-test" element={<ColorTest />} />
+          <Route path="/minesweeper" element={<MineSweeper />} />
         </Routes>
       </div>
     </Router>
