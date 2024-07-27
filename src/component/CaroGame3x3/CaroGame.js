@@ -3,9 +3,10 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { message } from "antd";
 import "./CaroGame.css";
+import config from "../config/config";
 
 // Khởi tạo kết nối Socket.IO
-const socket = io("http://localhost:5000");
+const socket = io(`${config.API_ROOT}`);
 
 function CaroGame() {
   const [room, setRoom] = useState("");
@@ -22,7 +23,7 @@ function CaroGame() {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/roomsCaro3x3");
+        const response = await axios.get(`${config.API_ROOT}/roomsCaro3x3`);
         setRooms(response.data);
       } catch (error) {
         console.error("Error fetching rooms:", error);
