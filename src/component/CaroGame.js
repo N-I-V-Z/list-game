@@ -14,6 +14,7 @@ function CaroGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [roomFull, setRoomFull] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState("X");
+  const [winner, setWinner] = useState("")
 
   // Lấy danh sách phòng từ server
   useEffect(() => {
@@ -38,7 +39,7 @@ function CaroGame() {
 
     socket.on("currentPlayer", (currentPlayer) => {
       setCurrentPlayer(currentPlayer);
-    })
+    });
 
     socket.on("boardUpdate", (newBoard) => {
       setBoard(newBoard);
@@ -58,7 +59,7 @@ function CaroGame() {
 
   // Xử lý việc tham gia vào phòng
   const handleJoin = (roomName) => {
-    if (room.length === 0 && roomName.length === 0) {
+    if (room?.length === 0 || roomName.length === 0) {
       message.error("Missing input");
       return;
     }
@@ -98,8 +99,10 @@ function CaroGame() {
     return null;
   };
 
-  const winner = calculateWinner(board);
-  if (winner !== null) message.success(`${winner} Win`)
+  useEffect(() => {
+    setWinner(calculateWinner(board));
+    if (winner?.length > 0) message.success(`${winner} Win`);
+  }, [board, winner]);
 
   return (
     <div className="game-page">
@@ -130,7 +133,7 @@ function CaroGame() {
           </div>
           <div className="game-info">
             <div>
-              You: {player} Current Player: {currentPlayer}
+              You: {player} Current Player: {currentPlayer} {winner.length > 0 && <>Winner: {winner}</>}
             </div>
           </div>
         </div>
