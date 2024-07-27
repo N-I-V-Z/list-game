@@ -15,6 +15,8 @@ function CaroGame() {
   const [roomFull, setRoomFull] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState("");
+  const [showReplay, setShowReplay] = useState(false);
+  const [replayRequest, setReplayRequest] = useState(false);
 
   // Lấy danh sách phòng game loại caro3x3 hợp lệ để vào
   useEffect(() => {
@@ -50,10 +52,25 @@ function CaroGame() {
       setRoomFull(false);
     });
 
+    socket.on("replayRequest", () => {
+      setReplayRequest(true);
+      message.info("The other player wants to replay. Accept?");
+    });
+
+    socket.on("replayAccepted", () => {
+      setBoard(Array(9).fill(null));
+      setWinner("");
+      setCurrentPlayer("X");
+      setShowReplay(false);
+      setReplayRequest(false);
+    });
+
     return () => {
       socket.off("playerRole");
       socket.off("boardUpdate");
       socket.off("roomFull");
+      socket.off("replayRequest");
+      socket.off("replayAccepted");
     };
   }, []);
 
@@ -99,13 +116,25 @@ function CaroGame() {
     return null;
   };
 
+  // hiện thông báo khi có người chiến thắng
   useEffect(() => {
     const winner = calculateWinner(board);
     if (winner) {
       setWinner(winner);
+      setShowReplay(true);
       message.success(`${winner} Wins`);
     }
   }, [board]);
+
+  const handleReplay = () => {
+    socket.emit("replay");
+    setShowReplay(false);
+  };
+  // khi chấp nhận đâus lại thì sẽ gửi yêu cầu xử lý sang server
+  const handleAcceptReplay = () => {
+    socket.emit("acceptReplay");
+    setReplayRequest(false);
+  };
 
   return (
     <div className="game-page">
@@ -142,6 +171,17 @@ function CaroGame() {
             <div>
               You: {player} Current Player: {currentPlayer} {winner && <>Winner: {winner}</>}
             </div>
+            {showReplay && !replayRequest && (
+              <div>
+                <button onClick={handleReplay}>Replay</button>
+              </div>
+            )}
+            {replayRequest && (
+              <div>
+                <button onClick={handleAcceptReplay}>Accept Replay</button>
+                <button onClick={() => setReplayRequest(false)}>Decline</button>
+              </div>
+            )}
           </div>
         </div>
       )}
