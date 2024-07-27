@@ -149,9 +149,9 @@ function CaroGame() {
   };
   return (
     <div className="game-page">
-      <button onClick={handleClickk} className="navigate-button">Home</button>
       {!roomFull ? (
         <div className="choose-room">
+          <button onClick={handleClickk} className="navigate-button">Home</button>
           <h2>Choose or Create a Room</h2>
           <input
             type="text"
@@ -199,7 +199,7 @@ function CaroGame() {
           <div className="game-board">
             <Board squares={board} onClick={(i) => handleClick(i)} />
           </div>
-
+          <button onClick={handleClickk} className="navigate-button2">Home</button>
         </div>
       )}
     </div>
