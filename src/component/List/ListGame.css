@@ -1,0 +1,59 @@
+/* Container chính của danh sách trò chơi */
+.list-game-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+/* Thông điệp chào mừng */
+.welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px; /* Khoảng cách giữa thông điệp và danh sách trò chơi */
+  text-align: center;
+  padding: 0 20px; /* Padding cho thông điệp */
+  
+}
+
+/* Định dạng cho mỗi liên kết trò chơi */
+.game-link {
+  text-decoration: none; /* Loại bỏ gạch chân mặc định của liên kết */
+  color: #333; /* Màu chữ mặc định */
+  margin: 10px; /* Khoảng cách giữa các liên kết */
+  width: 200px; /* Chiều rộng cố định cho mỗi liên kết */
+  padding: 10px; /* Khoảng cách bên trong */
+  background-color: #fff; /* Màu nền trắng */
+  border-radius: 8px; /* Bo tròn các góc */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng để nổi bật */
+  text-align: center; /* Căn giữa văn bản */
+  transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển màu nền và biến dạng */
+}
+
+/* Hình ảnh trò chơi */
+.game-image {
+  width: 100%; /* Chiều rộng 100% của liên kết */
+  height: auto; /* Chiều cao tự động để giữ tỷ lệ */
+  border-radius: 8px 8px 0 0; /* Bo tròn góc trên của hình ảnh */
+  object-fit: cover; /* Cắt hình ảnh để vừa với phần chứa */
+}
+
+/* Hiệu ứng khi di chuột qua liên kết trò chơi */
+.game-link:hover {
+  background-color: #f0f0f0; /* Màu nền khi di chuột qua */
+  transform: scale(1.05); /* Phóng to liên kết khi di chuột qua */
+}
+
+/* Hiệu ứng khi nhấn vào liên kết trò chơi */
+.game-link:active {
+  transform: scale(0.95); /* Thu nhỏ liên kết khi nhấn */
+}
+
+/* Văn bản của liên kết trò chơi */
+.game-link-text {
+  font-size: 18px; /* Kích thước chữ */
+  font-weight: bold; /* Đậm chữ */
+  padding: 10px; /* Khoảng cách bên trong văn bản */
+}
