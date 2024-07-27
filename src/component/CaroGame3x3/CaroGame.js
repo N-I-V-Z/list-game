@@ -91,7 +91,7 @@ function CaroGame() {
     socket.emit("makeMove", { index, player });
   };
 
-  // Tính người chiến thắng
+  // Tính người chiến thắng hoặc xác nhận đấu hòa
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
@@ -110,19 +110,25 @@ function CaroGame() {
         squares[a] === squares[b] &&
         squares[a] === squares[c]
       ) {
-        return squares[a];
+        return squares[a]; // Trả về người chiến thắng ('X' hoặc 'O')
       }
     }
-    return null;
+    return squares.every((square) => square !== null) ? "Draw" : null; // Trả về 'Draw' nếu hòa
   };
 
-  // hiện thông báo khi có người chiến thắng
+  // hiện thông báo khi có người chiến thắng hoặc hòa
   useEffect(() => {
     const winner = calculateWinner(board);
     if (winner) {
-      setWinner(winner);
-      setShowReplay(true);
-      message.success(`${winner} Wins`);
+      if (winner === "Draw") {
+        setWinner("Draw");
+        setShowReplay(true);
+        message.success(`Draw`);
+      } else {
+        setWinner(winner);
+        setShowReplay(true);
+        message.success(`${winner} Wins`);
+      }
     }
   }, [board]);
 
@@ -154,7 +160,9 @@ function CaroGame() {
             {rooms.length > 0 ? (
               rooms.map((roomName, index) => (
                 <li key={index}>
-                  <button onClick={() => handleJoin(roomName)}>{roomName}</button>
+                  <button onClick={() => handleJoin(roomName)}>
+                    {roomName}
+                  </button>
                 </li>
               ))
             ) : (
@@ -169,7 +177,8 @@ function CaroGame() {
           </div>
           <div className="game-info">
             <div>
-              You: {player} Current Player: {currentPlayer} {winner && <>Winner: {winner}</>}
+              You: {player} Current Player: {currentPlayer}{" "}
+              {winner && winner === "Draw" ? <>Draw</> : <>Winner: {winner}</>}
             </div>
             {showReplay && !replayRequest && (
               <div>
