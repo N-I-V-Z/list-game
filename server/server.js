@@ -1,12 +1,17 @@
 const express = require('express');
 const http = require('http');
-const { Server } = require('socket.io');
+const socketIo = require('socket.io');
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
-const io = new Server(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  },
+});
 
 let rooms = {};
 
@@ -15,28 +20,55 @@ app.get('/rooms', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected:', socket.id);
 
   socket.on('joinRoom', (room) => {
     socket.join(room);
+
     if (!rooms[room]) {
-      rooms[room] = Array(9).fill(null);
+      rooms[room] = {
+        board: Array(9).fill(null),
+        players: [],
+        currentPlayer: null
+      };
     }
-    socket.emit('boardUpdate', rooms[room]);
-  });
 
-  socket.on('makeMove', ({ room, index, player }) => {
-    if (rooms[room] && rooms[room][index] === null) {
-      rooms[room][index] = player;
-      io.to(room).emit('boardUpdate', rooms[room]);
+    let player;
+    if (rooms[room].players.length === 0) {
+      player = 'X';
+      rooms[room].currentPlayer = 'X';
+    } else if (rooms[room].players.length === 1) {
+      player = 'O';
+    } else {
+      socket.emit('roomFull', room);
+      return;
     }
-  });
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected:', socket.id);
+
+    rooms[room].players.push(socket.id);
+    socket.emit('playerRole', player);
+    socket.emit('boardUpdate', rooms[room].board);
+
+    socket.on('makeMove', ({ index, player }) => {
+      if (rooms[room] && rooms[room].board[index] === null && player === rooms[room].currentPlayer) {
+        rooms[room].board[index] = player;
+        rooms[room].currentPlayer = player === 'X' ? 'O' : 'X'; // Toggle player
+        io.to(room).emit('currentPlayer', rooms[room].currentPlayer);
+        io.to(room).emit('boardUpdate', rooms[room].board);
+      }
+    });
+
+    socket.on('disconnect', () => {
+      if (rooms[room]) {
+        rooms[room].players = rooms[room].players.filter((id) => id !== socket.id);
+        if (rooms[room].players.length === 0) {
+          delete rooms[room];
+        }
+        console.log('user disconnected:', socket.id);
+      }
+    });
   });
 });
 
 server.listen(5000, () => {
-  console.log('listening on http://localhost:5000');
+  console.log("listening on http://localhost:5000");
 });
