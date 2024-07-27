@@ -1,0 +1,7 @@
+element.style {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+    align-items: end;
+}
