@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# List Game Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Giới thiệu
 
-## Available Scripts
+Đây là một dự án chứa các trò chơi đơn giản được xây dựng bằng ReactJS và Node.js. Dự án này bao gồm các trò chơi như Caro, Rắn Săn Mồi, Minesweeper và Test Color Game, được thiết kế để minh họa cách sử dụng các công nghệ này để phát triển ứng dụng web tương tác.
 
-In the project directory, you can run:
+## Các Trò Chơi
 
-### `npm start`
+### 1. Caro 3x3
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Caro 3x3 là một trò chơi chiến thuật đơn giản với bàn cờ 3x3, nơi người chơi cố gắng sắp xếp ba ký tự liên tiếp theo hàng, cột hoặc đường chéo.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Rắn Săn Mồi
 
-### `npm test`
+Rắn Săn Mồi là trò chơi cổ điển, nơi người chơi điều khiển con rắn để ăn thức ăn và tránh va chạm với tường hoặc chính cơ thể của nó. Mục tiêu là làm cho con rắn dài hơn và đạt điểm số cao nhất.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Caro
 
-### `npm run build`
+Tương tự như Caro 3x3 nhưng với kích thước bàn cờ lớn hơn, người chơi cần sắp xếp năm ký tự liên tiếp để thắng.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. Minesweeper
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Minesweeper là một trò chơi cổ điển, nơi người chơi phải mở các ô trên bảng mà không chạm phải mìn. Trò chơi cung cấp tính năng để đánh dấu ô có khả năng chứa mìn và điều chỉnh độ khó.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 5. Test Color Game
 
-### `npm run eject`
+Test Color Game là trò chơi đơn giản để kiểm tra khả năng phân biệt màu sắc. Người chơi cần tìm và chọn màu sắc đúng trong một lưới màu sắc.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Cài Đặt
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Để chạy dự án này trên máy của bạn, hãy làm theo các bước sau:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone Repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/N-I-V-Z/list-game.git
+```
 
-## Learn More
+### 2. Cài Đặt Các Gói Cần Thiết
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Chuyển đến thư mục dự án và cài đặt các gói cần thiết:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd list-game
+npm install
+```
 
-### Code Splitting
+### 3. Chạy Dự Án
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Để chạy Font-end, bạn có thể sử dụng lệnh sau:**
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Dự án sẽ chạy trên cổng mặc định `localhost:3000`.
 
-### Making a Progressive Web App
+**Để chạy Back-end, bạn có thể sử dụng lệnh sau:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run server
+```
 
-### Advanced Configuration
+Dự án sẽ chạy trên cổng mặc định `localhost:5000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Cấu Trúc Dự Án
 
-### Deployment
+- **src/**: Chứa mã nguồn của Front-end.
+  - **components/**: Chứa các component React cho các trò chơi.
+- **server/**: Chứa mã nguồn của Back-end
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Các Tính Năng
 
-### `npm run build` fails to minify
+- **Caro 3x3**: Trò chơi Caro trên bàn cờ 3x3.
+- **Rắn Săn Mồi**: Trò chơi điều khiển con rắn ăn thức ăn.
+- **Caro**: Trò chơi Caro với 5 vị trí liên tiếp là chiến thắng.
+- **Minesweeper**: Trò chơi mở ô mà không chạm phải mìn.
+- **Test Color Game**: Trò chơi kiểm tra khả năng phân biệt màu sắc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Cập Nhật
+
+Nếu bạn gặp vấn đề hoặc có bất kỳ câu hỏi nào, vui lòng mở một vấn đề (issue) hoặc gửi pull request trên GitHub repository.
+
+## Liên Hệ
+
+Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi qua GitHub: 
+- [N-I-V-Z](https://github.com/N-I-V-Z).
+- [hocdethanhdev](https://github.com/hocdethanhdev).
+- [Thinhlp176](https://github.com/Thinhlp176).
+- [khaiqui](https://github.com/khaiqui).

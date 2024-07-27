@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './ListGame.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./ListGame.css";
 
 function ListGame() {
   return (
@@ -28,25 +28,33 @@ function ListGame() {
         </Link>
 
         <Link to="/caro-game-5" className="game-link">
-        <img
+          <img
             src="https://play-lh.googleusercontent.com/DBUWup7Cl26mbtN81yz0pw9Wge5aNll4T3su6pOpoSYnFVx8TLMv9-P5S7QAKPuV6BA"
-            alt="Care Game 5"
+            alt="Caro Game 5"
             className="game-image"
           />
           <div className="game-link-text">Caro Game 5</div>
         </Link>
 
         <Link to="/color-test" className="game-link">
-        <img
+          <img
             src="https://play-lh.googleusercontent.com/AcHFAoNerGDOI8DuIxbBFc1qXAVjE2q1_RYMZVhO5jQ1rgtKk7h2lQQFJe2Cje4NF3WC"
             alt="Test Color Game"
             className="game-image"
           />
           <div className="game-link-text">Test Color Game</div>
         </Link>
-        
+        <Link to="/minesweeper" className="game-link">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvqMBWUiLKSnwHym-6JeSXYuGJGaRwtt6UrQ&s"
+            alt="Mine Sweeper"
+            className="game-image"
+          />
+          <div className="game-link-text">Mine Sweeper</div>
+        </Link>
+
         <Link to="/block-stacking" className="game-link">
-        <img
+          <img
             src="https://st.gamevui.com/images/image/2019/12/28/xep-gach-200.jpg"
             alt="Block Stacking Game"
             className="game-image"
