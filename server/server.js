@@ -15,23 +15,27 @@ const io = socketIo(server, {
 
 let rooms = {};
 
-app.get('/rooms', (req, res) => {
-  res.json(Object.keys(rooms));
+app.get('/roomsCaro3x3', (req, res) => {
+  const caro3x3Rooms = Object.keys(rooms).filter(roomName => 
+    rooms[roomName].type === 'caro3x3' && rooms[roomName].players.length < 2
+  );
+  res.json(caro3x3Rooms);
 });
 
 io.on('connection', (socket) => {
 
-  socket.on('joinRoom', (room) => {
+  socket.on('joinRoomCaro3x3', (room) => {
     socket.join(room);
-
+    // tạo room nếu phòng chưa có
     if (!rooms[room]) {
       rooms[room] = {
         board: Array(9).fill(null),
         players: [],
-        currentPlayer: null
+        currentPlayer: null,
+        type: 'caro3x3'
       };
     }
-
+    // tạo player và role của họ
     let player;
     if (rooms[room].players.length === 0) {
       player = 'X';
@@ -43,11 +47,11 @@ io.on('connection', (socket) => {
       return;
     }
 
-
+    // gửi về người dùng role của họ và update lượt đánh nếu có
     rooms[room].players.push(socket.id);
     socket.emit('playerRole', player);
     socket.emit('boardUpdate', rooms[room].board);
-
+    // thay đổi ô trên board và chuyển người chơi khi có người đánh
     socket.on('makeMove', ({ index, player }) => {
       if (rooms[room] && rooms[room].board[index] === null && player === rooms[room].currentPlayer) {
         rooms[room].board[index] = player;

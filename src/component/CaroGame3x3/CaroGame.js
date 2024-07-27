@@ -14,13 +14,13 @@ function CaroGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [roomFull, setRoomFull] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState("X");
-  const [winner, setWinner] = useState("")
+  const [winner, setWinner] = useState("");
 
-  // Lấy danh sách phòng từ server
+  // Lấy danh sách phòng game loại caro3x3 hợp lệ để vào
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/rooms");
+        const response = await axios.get("http://localhost:5000/roomsCaro3x3");
         setRooms(response.data);
       } catch (error) {
         console.error("Error fetching rooms:", error);
@@ -30,7 +30,7 @@ function CaroGame() {
     fetchRooms();
   }, []);
 
-  // Kết nối và xử lý sự kiện từ server
+  // Lấy thông tin cần thiết trong phòng khi tham gia
   useEffect(() => {
     socket.on("playerRole", (role) => {
       setPlayer(role);
@@ -57,13 +57,13 @@ function CaroGame() {
     };
   }, []);
 
-  // Xử lý việc tham gia vào phòng
+  // Tham gia vào phòng game
   const handleJoin = (roomName) => {
-    if (room?.length === 0 || roomName.length === 0) {
+    if (!roomName && !room) {
       message.error("Missing input");
       return;
     }
-    socket.emit("joinRoom", roomName || room);
+    socket.emit("joinRoomCaro3x3", roomName || room);
   };
 
   // Xử lý việc nhấp vào ô trên bảng
@@ -74,7 +74,7 @@ function CaroGame() {
     socket.emit("makeMove", { index, player });
   };
 
-  // Tính toán người chiến thắng
+  // Tính người chiến thắng
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
@@ -100,9 +100,12 @@ function CaroGame() {
   };
 
   useEffect(() => {
-    setWinner(calculateWinner(board));
-    if (winner?.length > 0) message.success(`${winner} Win`);
-  }, [board, winner]);
+    const winner = calculateWinner(board);
+    if (winner) {
+      setWinner(winner);
+      message.success(`${winner} Wins`);
+    }
+  }, [board]);
 
   return (
     <div className="game-page">
@@ -119,11 +122,15 @@ function CaroGame() {
 
           <h3>Available Rooms:</h3>
           <ul>
-            {rooms.map((roomName, index) => (
-              <li key={index}>
-                <button onClick={() => handleJoin(roomName)}>{roomName}</button>
-              </li>
-            ))}
+            {rooms.length > 0 ? (
+              rooms.map((roomName, index) => (
+                <li key={index}>
+                  <button onClick={() => handleJoin(roomName)}>{roomName}</button>
+                </li>
+              ))
+            ) : (
+              <li>No rooms available</li>
+            )}
           </ul>
         </div>
       ) : (
@@ -133,7 +140,7 @@ function CaroGame() {
           </div>
           <div className="game-info">
             <div>
-              You: {player} Current Player: {currentPlayer} {winner.length > 0 && <>Winner: {winner}</>}
+              You: {player} Current Player: {currentPlayer} {winner && <>Winner: {winner}</>}
             </div>
           </div>
         </div>
