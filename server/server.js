@@ -23,7 +23,6 @@ app.get('/roomsCaro3x3', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-
   socket.on('joinRoomCaro3x3', (room) => {
     socket.join(room);
     // tạo room nếu phòng chưa có
@@ -58,6 +57,24 @@ io.on('connection', (socket) => {
         rooms[room].currentPlayer = player === 'X' ? 'O' : 'X'; // Toggle player
         io.to(room).emit('currentPlayer', rooms[room].currentPlayer);
         io.to(room).emit('boardUpdate', rooms[room].board);
+      }
+    });
+
+    // gửi thông báo khi có yêu cầu đấu lại
+    socket.on('replay', () => {
+      const otherPlayer = rooms[room].players.find(id => id !== socket.id);
+      if (otherPlayer) {
+        io.to(otherPlayer).emit('replayRequest');
+      }
+    });
+    // xử lý nếu chấp nhận đấu lại
+    socket.on('acceptReplay', () => {
+      if (rooms[room]) {
+        rooms[room].board = Array(9).fill(null);
+        rooms[room].currentPlayer = 'X';
+        io.to(room).emit('replayAccepted');
+        io.to(room).emit('boardUpdate', rooms[room].board);
+        io.to(room).emit('currentPlayer', rooms[room].currentPlayer);
       }
     });
 
