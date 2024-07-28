@@ -1,4 +1,4 @@
-.game {
+.game-caro3x3 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,32 +6,33 @@
   height: 100vh;
 }
 
-.game-board {
+.game-board-caro3x3 {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-gap: 5px;
 }
 
-.square {
+.square-caro3x3 {
   width: 100px;
   height: 100px;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
 }
-.XO {
+
+.XO-caro3x3 {
   background: linear-gradient(135deg, #f203c6, #ea00ff, #054cf0, #00aaff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.board {
+.board-caro3x3 {
   display: flex;
   flex-wrap: wrap;
   width: 310px; /* Width of the board including gaps */
 }
 
-.choose-room {
+.choose-room-caro3x3 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,39 +40,41 @@
   height: 100vh;
 }
 
-.choose-room input {
+.choose-room-caro3x3 input {
   margin: 10px 0;
   padding: 10px;
   font-size: 16px;
 }
 
-.choose-room button {
+.choose-room-caro3x3 button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin: 5px;
 }
 
-.choose-room ul {
+.choose-room-caro3x3 ul {
   list-style-type: none;
   padding: 0;
 }
 
-.choose-room li {
+.choose-room-caro3x3 li {
   margin: 5px 0;
 }
-.game-page {
+
+.game-page-caro3x3 {
   height: 100%;
 }
-.button-replay-caro {
+
+.button-replay-caro-caro3x3 {
   border-radius: 5%;
   border: none;
   height: 30px;
   margin-left: 60px;
   margin-bottom: 10px;
 }
-/* Nút Home */
-.navigate-button {
+
+.navigate-button-caro3x3 {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #3498db; /* Màu nền xanh dương */
@@ -81,24 +84,14 @@
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 10px;
 }
 
-/* Hiệu ứng khi di chuột qua nút Home */
-.navigate-button:hover {
+.navigate-button-caro3x3:hover {
   background-color: #2980b9; /* Màu nền xanh đậm hơn khi di chuột qua */
   transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
 }
 
-/* Hiệu ứng khi nhấn nút Home */
-.navigate-button:active {
+.navigate-button-caro3x3:active {
   transform: scale(0.95); /* Hiệu ứng khi nhấn nút */
-}
-
-.navigate-button2 {
-  height: 60px;
-  width: 80px;
-  margin-top: 10px;
-  margin-right: 230px;
 }

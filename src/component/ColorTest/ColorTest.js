@@ -1,7 +1,7 @@
 import { message } from "antd";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./ColorTest.css";
 // Hàm để chuyển đổi mã màu HEX sang RGB
 const hexToRgb = (hex) => {
   let r = 0,
@@ -100,7 +100,7 @@ function ColorTest() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>
-        <button onClick={handleClickk} className="navigate-button">
+        <button onClick={handleClickk} className="navigate-button-testcolor">
           Home
         </button>
         Choose the difference color
@@ -112,12 +112,15 @@ function ColorTest() {
           gap: "5px",
           justifyContent: "center",
           alignItems: "center",
-        }}>
+        }}
+        className="grid-testcolor"
+      >
         {gridColors.map((color, index) => (
           <div
             key={index}
             style={{ backgroundColor: color, width: "100px", height: "100px" }}
             onClick={handleCheck(color)}
+            className="box-testcolor"
           />
         ))}
       </div>
