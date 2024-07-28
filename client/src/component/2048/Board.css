@@ -1,17 +1,17 @@
 .board {
     display: grid;
-    gap: 10px; /* Khoảng cách giữa các ô */
+    gap: 10px;
     background-color: #bbada0;
     border-radius: 5px;
     padding: 10px;
-    width: max-content; /* Đảm bảo bảng có kích thước chính xác */
-    margin: 0 auto; /* Căn giữa bảng */
+    width: max-content;
+    margin: 0 auto;
 }
 
 .board-row {
     display: grid;
-    grid-template-columns: repeat(4, 100px); /* Đảm bảo mỗi cột có kích thước đều nhau */
-    gap: 10px; /* Khoảng cách giữa các ô */
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
 }
 
 .board-cell {
@@ -24,7 +24,7 @@
     font-size: 24px;
     font-weight: bold;
     border-radius: 15px;
-    box-sizing: border-box; /* Đảm bảo kích thước bao gồm padding và border */
+    box-sizing: border-box;
 }
 
 .filled[data-value="2"] {
@@ -69,4 +69,7 @@
 
 .filled[data-value="2048"] {
     background-color: #edc22e;
+}
+.th-button {
+    margin-left: 700px;
 }

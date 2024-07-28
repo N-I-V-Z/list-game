@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
-
+import { useNavigate } from "react-router-dom";
 const getRandomTile = () => {
     const value = Math.random() < 0.9 ? 2 : 4;
     return value;
@@ -77,7 +77,7 @@ const transpose = (board) => {
 
 const Game2048 = () => {
     const [board, setBoard] = useState(initializeBoard());
-
+    const navigate = useNavigate();
     const handleKeyPress = (e) => {
         let newBoard;
         if (e.key === 'ArrowLeft') {
@@ -108,13 +108,18 @@ const Game2048 = () => {
             window.removeEventListener('keydown', handleKeyPress);
         };
     }, [board]);
-
+    const goBackToMenu = () => {
+        navigate("/");
+    };
     return (
         <div>
             <h1 style={{ textAlign: 'center' }}>2048</h1>
             <Board board={board} />
-            <button onClick={resetGame2048} style={{ display: 'block', margin: '20px auto' }}>
+            <button className='block-back-button' onClick={resetGame2048} style={{ display: 'block', margin: '20px auto' }}>
                 Reset
+            </button>
+            <button onClick={goBackToMenu} className="block-back-button th-button">
+                Home
             </button>
         </div>
     );
