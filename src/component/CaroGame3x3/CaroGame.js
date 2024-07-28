@@ -34,8 +34,12 @@ function CaroGame() {
     fetchRooms();
   }, []);
 
-  // Lấy thông tin cần thiết trong phòng khi tham gia
+  // useEffect này dùng để lấy thông tin từ server ngay khi nhận được
   useEffect(() => {
+    // về real time (socket.io) thì ở đây sẽ giải thích một lần: 
+      // socket.on("1 key nào đó", (giá trị nhận được) => { (phần xử lý giá trị đó) })
+        // dòng này là sẽ nhận giá trị có key là "playerRole", có thể qua file server/server.js dòng 59 để xem
+        // những dòng dưới tương tự, socket.on là xử lý khi server truyền lên 1 dữ liệu nào đó 
     socket.on("playerRole", (role) => {
       setPlayer(role);
       setRoomFull(true);

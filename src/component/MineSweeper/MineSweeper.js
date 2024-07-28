@@ -91,7 +91,7 @@ const MineSweeper = () => {
 
     const newBoard = [...board]; // sao chép bảng hiện tại sang 1 bảng mới
     newBoard[row][col].isOpen = true; // set ô đã chọn mở lên
-    setBoard(newBoard); // set bảng mới vừa cập nhật vào bảng đang chơi. Còn về lý do vì sao không thay đổi trực tiếp trên bảng cũ mà phải copy ra để thay đổi thì có 3 lý do chính sau: React cần biết khi nào state thay đổi, nếu thay đổi trực tiếp trên board cũ thì có thể state không nhận biết được sự thay đổi và không cập nhật giao diện người dùng. Dễ quản lý và theo dỗi hơn, ... một số lý do nữa có thể lên mạng tìm hiểu
+    setBoard(newBoard); // set bảng mới vừa cập nhật vào bảng đang chơi. Còn về lý do vì sao không thay đổi trực tiếp trên bảng cũ mà phải copy ra để thay đổi thì có vài lý do chính sau: React cần biết khi nào state thay đổi, nếu thay đổi trực tiếp trên board cũ thì có thể state không nhận biết được sự thay đổi và không cập nhật giao diện người dùng. Dễ quản lý và theo dỗi hơn, ... một số lý do nữa có thể lên mạng tìm hiểu
 
     if (board[row][col].hasMine) { // nếu ô được chọn có mìn thì game over
       setGameOver(true);
@@ -104,7 +104,7 @@ const MineSweeper = () => {
 
   // hàm xử lý khi nhấn chuột phải (đặt cờ)
   const handleRightClick = (row, col, event) => {
-    event.preventDefault();
+    event.preventDefault(); // chặn menu xuất hiện khi nhấp chuột phải, còn về làm sao để biết mình nhấp chuột phải thì trong thẻ div onClick là nhấp chuột trái thì onContextMenu là nhấp chuột phải
     if (gameOver || board[row][col].isOpen) return; // check một số thông tin trước khi thực hiện
 
     const newBoard = [...board]; // copy 1 bản mới của board hiện tại
