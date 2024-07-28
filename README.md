@@ -38,6 +38,7 @@ Block Game là một trò chơi cổ điển với lối chơi đơn giản như
 
 ```bash
 git clone https://github.com/N-I-V-Z/list-game.git
+cd list-game
 ```
 
 ### 2. Cài Đặt Các Gói Cần Thiết
@@ -47,7 +48,6 @@ Chuyển đến thư mục dự án và cài đặt các gói cần thiết:
 - Chuyển đến client và cài các gói cần thiết
 
 ```bash
-cd list-game
 cd client
 npm install
 ```
@@ -55,7 +55,6 @@ npm install
 - Chuyển đến client và cài các gói cần thiết
 
 ```bash
-cd list-game
 cd server
 npm install
 ```
