@@ -43,25 +43,30 @@ io.on('connection', (socket) => {
     }
     // tạo player và role của họ
     let player;
-    if (rooms[room].players.length === 0) {
+    if (rooms[room].players.length === 0) { // phòng trống thì người chơi sẽ là X
       player = 'X';
       rooms[room].currentPlayer = 'X';
-    } else if (rooms[room].players.length === 1) {
+    } else if (rooms[room].players.length === 1) { // phòng đã có người thì người chơi sẽ là O
       player = 'O';
-    } else {
+    } else { // đủ 2 người thì gửi thông tin phòng full về
       socket.emit('roomFull', room);
       return;
     }
 
     // gửi về người dùng role của họ và update lượt đánh nếu có
+    // socket.emit là gửi lên phía client giá trị nào đó
     rooms[room].players.push(socket.id);
     socket.emit('playerRole', player);
     socket.emit('boardUpdate', rooms[room].board);
+
     // thay đổi ô trên board và chuyển người chơi khi có người đánh
+    // socket.on là xử lý khi server nhận được 1 yêu cầu với key là "makeMove" sau đó sẽ xử lý
     socket.on('makeMove', ({ index, player }) => {
       if (rooms[room] && rooms[room].board[index] === null && player === rooms[room].currentPlayer) {
+        // thay đổi thông tin trên bàn cờ và đặt lại người chơi hiện tại
         rooms[room].board[index] = player;
-        rooms[room].currentPlayer = player === 'X' ? 'O' : 'X'; // Toggle player
+        rooms[room].currentPlayer = player === 'X' ? 'O' : 'X';
+        // gửi về thông tin người chơi hiện tại và bàn cờ sau khi update
         io.to(room).emit('currentPlayer', rooms[room].currentPlayer);
         io.to(room).emit('boardUpdate', rooms[room].board);
       }
@@ -69,29 +74,33 @@ io.on('connection', (socket) => {
 
     // gửi thông báo khi có yêu cầu đấu lại
     socket.on('replay', () => {
+      // xác định người chơi nhận được thông báo replay
       const otherPlayer = rooms[room].players.find(id => id !== socket.id);
       if (otherPlayer) {
+        // gửi thông tin yêu cầu đấu lại cho người chơi vừa tìm được
         io.to(otherPlayer).emit('replayRequest');
       }
     });
     // xử lý nếu chấp nhận đấu lại
     socket.on('acceptReplay', () => {
       if (rooms[room]) {
+        // yêu cầu đc chấp nhận thì set lại bàn cờ và người chơi hiện tại
         rooms[room].board = Array(9).fill(null);
         rooms[room].currentPlayer = 'X';
+        // gửi lên thông báo yêu cầu đấu lại đã được chấp nhận, bàn cờ đã được set lại và người chơi hiện tại
         io.to(room).emit('replayAccepted');
         io.to(room).emit('boardUpdate', rooms[room].board);
         io.to(room).emit('currentPlayer', rooms[room].currentPlayer);
       }
     });
 
+    // phòng không còn người thì xóa phòng
     socket.on('disconnect', () => {
       if (rooms[room]) {
         rooms[room].players = rooms[room].players.filter((id) => id !== socket.id);
         if (rooms[room].players.length === 0) {
           delete rooms[room];
         }
-        console.log('user disconnected:', socket.id);
       }
     });
   });
