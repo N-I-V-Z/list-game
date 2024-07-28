@@ -159,7 +159,7 @@ const SnakeGame = () => {
             alt="Snake Game"
             className="snake-start-image"
           />
-          <button onClick={handleClickk} className="navigate-button">
+          <button onClick={handleClickk} className="navigate-button-snakegame">
             Home
           </button>
           <button className="snake-start-button" onClick={startGame}>
