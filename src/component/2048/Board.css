@@ -1,0 +1,72 @@
+.board {
+    display: grid;
+    gap: 10px; /* Khoảng cách giữa các ô */
+    background-color: #bbada0;
+    border-radius: 5px;
+    padding: 10px;
+    width: max-content; /* Đảm bảo bảng có kích thước chính xác */
+    margin: 0 auto; /* Căn giữa bảng */
+}
+
+.board-row {
+    display: grid;
+    grid-template-columns: repeat(4, 100px); /* Đảm bảo mỗi cột có kích thước đều nhau */
+    gap: 10px; /* Khoảng cách giữa các ô */
+}
+
+.board-cell {
+    width: 100px;
+    height: 100px;
+    background-color: #cdc1b4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 15px;
+    box-sizing: border-box; /* Đảm bảo kích thước bao gồm padding và border */
+}
+
+.filled[data-value="2"] {
+    background-color: #eee4da;
+}
+
+.filled[data-value="4"] {
+    background-color: #ede0c8;
+}
+
+.filled[data-value="8"] {
+    background-color: #f2b179;
+}
+
+.filled[data-value="16"] {
+    background-color: #f59563;
+}
+
+.filled[data-value="32"] {
+    background-color: #f67c5f;
+}
+
+.filled[data-value="64"] {
+    background-color: #f65e3b;
+}
+
+.filled[data-value="128"] {
+    background-color: #edcf72;
+}
+
+.filled[data-value="256"] {
+    background-color: #edcc61;
+}
+
+.filled[data-value="512"] {
+    background-color: #edc850;
+}
+
+.filled[data-value="1024"] {
+    background-color: #edc53f;
+}
+
+.filled[data-value="2048"] {
+    background-color: #edc22e;
+}
