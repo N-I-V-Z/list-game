@@ -44,8 +44,19 @@ git clone https://github.com/N-I-V-Z/list-game.git
 
 Chuyển đến thư mục dự án và cài đặt các gói cần thiết:
 
+- Chuyển đến client và cài các gói cần thiết
+
 ```bash
 cd list-game
+cd client
+npm install
+```
+
+- Chuyển đến client và cài các gói cần thiết
+
+```bash
+cd list-game
+cd server
 npm install
 ```
 
@@ -54,6 +65,7 @@ npm install
 **Để chạy Font-end, bạn có thể sử dụng lệnh sau:**
 
 ```bash
+cd client
 npm start
 ```
 
@@ -62,15 +74,15 @@ Dự án sẽ chạy trên cổng mặc định `localhost:3000`.
 **Để chạy Back-end, bạn có thể sử dụng lệnh sau:**
 
 ```bash
-npm run server
+cd server
+npm start
 ```
 
 Dự án sẽ chạy trên cổng mặc định `localhost:5000`.
 
 ## Cấu Trúc Dự Án
 
-- **src/**: Chứa mã nguồn của Front-end.
-  - **components/**: Chứa các component React cho các trò chơi.
+- **client/**: Chứa mã nguồn của Front-end.
 - **server/**: Chứa mã nguồn của Back-end
 
 ## Các Tính Năng
