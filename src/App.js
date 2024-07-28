@@ -8,7 +8,7 @@ import CaroGame5 from "./component/CaroGame5/CaroGame";
 import ColorTest from "./component/ColorTest/ColorTest";
 import BlockStackingGame from "./component/Block Stacking Game/BlockStackingGame";
 import MineSweeper from "./component/MineSweeper/MineSweeper";
-
+import Game2048 from "./component/2048/Game2048";
 function App() {
   return (
     <Router>
@@ -21,6 +21,7 @@ function App() {
           <Route path="/color-test" element={<ColorTest />} />
           <Route path="/block-stacking" element={<BlockStackingGame />} />
           <Route path="/minesweeper" element={<MineSweeper />} />
+          <Route path="/2048" element={<Game2048 />} />
         </Routes>
       </div>
     </Router>

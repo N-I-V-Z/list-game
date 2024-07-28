@@ -61,6 +61,14 @@ function ListGame() {
           />
           <div className="game-link-text">Block Stacking Game</div>
         </Link>
+        <Link to="/2048" className="game-link">
+          <img
+            src="https://s.cafebazaar.ir/1/icons/com.irapps.game2048_512x512.png"
+            alt="2048"
+            className="game-image"
+          />
+          <div className="game-link-text">2048</div>
+        </Link>
       </div>
     </div>
   );
