@@ -12,7 +12,7 @@ const initializeBoard = () => {
     addRandomTile(newBoard);
     return newBoard;
 };
-
+let gameOver = false;
 const addRandomTile = (board) => {
     const emptyTiles = [];
     for (let row = 0; row < 4; row++) {
@@ -26,6 +26,10 @@ const addRandomTile = (board) => {
         const [row, col] = emptyTiles[Math.floor(Math.random() * emptyTiles.length)]; //bắt ra 1 ô random
         board[row][col] = getRandomTile(); //gán vô cho 1 số
     }
+    if (emptyTiles.length === 0) {
+        gameOver = true;
+    }
+
 };
 
 const mergeRowLeft = (row) => {
@@ -118,6 +122,7 @@ const Game2048 = () => {
             <button className='block-back-button' onClick={resetGame2048} style={{ display: 'block', margin: '20px auto' }}>
                 Reset
             </button>
+            {gameOver && <div className="block-stacking-game-over-2048">Game Over</div>}
             <button onClick={goBackToMenu} className="block-back-button th-button">
                 Home
             </button>
