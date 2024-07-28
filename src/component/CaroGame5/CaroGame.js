@@ -5,7 +5,7 @@ import { message } from "antd";
 import "./CaroGame.css";
 import config from "../../config/config";
 import { useNavigate } from 'react-router-dom';
-// Khởi tạo kết nối Socket.IO
+
 const socket = io(`${config.API_ROOT}`);
 
 function CaroGameBoard() {
@@ -33,7 +33,7 @@ function CaroGameBoard() {
     fetchRooms();
   }, []);
 
-  // Lấy thông tin cần thiết trong phòng khi tham gia
+  // phần này tương tự bên caro3x3
   useEffect(() => {
     socket.on("playerRole", (role) => {
       setPlayer(role);
