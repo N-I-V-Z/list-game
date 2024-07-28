@@ -149,6 +149,19 @@
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
+.navigate-button-snakegame {
+padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Màu nền xanh dương */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
 
 /* Hiệu ứng khi di chuột qua nút */
 .snake-start-button:hover {
@@ -183,3 +196,4 @@
     outline: none;
     border-color: #2980b9;
 }
+
