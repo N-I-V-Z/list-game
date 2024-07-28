@@ -1,7 +1,10 @@
-element.style {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 5px;
-    justify-content: center;
-    align-items: end;
-}
+.navigate-button-testcolor {
+    background-color: #007bff; /* Màu nền xanh dương */
+    color: white;              /* Màu chữ trắng */
+    border: none;              /* Không có viền */
+    padding: 10px 20px;        /* Khoảng cách bên trong */
+    font-size: 16px;           /* Kích thước chữ */
+    cursor: pointer;           /* Thay đổi con trỏ chuột khi hover */
+    border-radius: 5px;        /* Bo góc nhẹ */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi khi hover */
+  }

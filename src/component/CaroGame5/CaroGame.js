@@ -191,10 +191,10 @@ function CaroGameBoard() {
   };
 
   return (
-    <div className="game-container">
+    <div className="game-container-caro5">
       {!roomFull ? (
-        <div className="choose-room">
-          <button onClick={handleClickk} className="navigate-button">Home</button>
+        <div className="room-selection-caro5">
+          <button onClick={handleClickk} className="navigate-button-caro5">Home</button>
           <h2>Choose or Create a Room</h2>
           <input
             type="text"
@@ -220,8 +220,8 @@ function CaroGameBoard() {
           </ul>
         </div>
       ) : (
-        <div className="game-board">
-          <div className="game-info">
+        <div className="game-board-caro5">
+          <div className="game-info-caro5">
             <div>
               You: {player} Current Player: {currentPlayer}{" "}
               {winner &&
@@ -248,11 +248,11 @@ function CaroGameBoard() {
 
 function Board({ squares, onClick }) {
   return (
-    <div className="caro-board">
+    <div className="caro-board-caro5">
       {squares.map((square, index) => (
         <button
           key={index}
-          className="caro-square"
+          className="caro-square-caro5"
           onClick={() => onClick(index)}
         >
           {square}

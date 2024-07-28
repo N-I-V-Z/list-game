@@ -4,7 +4,7 @@ import axios from "axios";
 import { message } from "antd";
 import "./CaroGame.css";
 import config from "../../config/config";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Khởi tạo kết nối Socket.IO
 const socket = io(`${config.API_ROOT}`);
@@ -36,10 +36,10 @@ function CaroGame() {
 
   // useEffect này dùng để lấy thông tin từ server ngay khi nhận được
   useEffect(() => {
-    // về real time (socket.io) thì ở đây sẽ giải thích một lần: 
-      // socket.on("1 key nào đó", (giá trị nhận được) => { (phần xử lý giá trị đó) })
-        // dòng này là sẽ nhận giá trị có key là "playerRole", có thể qua file server/server.js dòng 59 để xem
-        // những dòng dưới tương tự, socket.on là xử lý khi server truyền lên 1 dữ liệu nào đó 
+    // về real time (socket.io) thì ở đây sẽ giải thích một lần:
+    // socket.on("1 key nào đó", (giá trị nhận được) => { (phần xử lý giá trị đó) })
+    // dòng này là sẽ nhận giá trị có key là "playerRole", có thể qua file server/server.js dòng 59 để xem
+    // những dòng dưới tương tự, socket.on là xử lý khi server truyền lên 1 dữ liệu nào đó
     socket.on("playerRole", (role) => {
       setPlayer(role);
       setRoomFull(true);
@@ -149,13 +149,15 @@ function CaroGame() {
   };
   const navigate = useNavigate();
   const handleClickk = () => {
-    navigate('/');
+    navigate("/");
   };
   return (
-    <div className="game-page">
+    <div className="game-page-caro3x3">
       {!roomFull ? (
-        <div className="choose-room">
-          <button onClick={handleClickk} className="navigate-button">Home</button>
+        <div className="choose-room-caro3x3">
+          <button onClick={handleClickk} className="navigate-button-caro3x3">
+            Home
+          </button>
           <h2>Choose or Create a Room</h2>
           <input
             type="text"
@@ -181,16 +183,23 @@ function CaroGame() {
           </ul>
         </div>
       ) : (
-        <div className="game">
-          <div className="game-info">
+        <div className="game-caro3x3">
+          <div className="game-info-caro3x3">
             <div>
-              You: {player} ,Current Player: {currentPlayer}{" "}
-              <br />
-              <p>{winner && winner === "Draw" ? <>Draw</> : <>Winner: {winner}</>}</p>
+              You: {player} ,Current Player: {currentPlayer} <br />
+              <p>
+                {winner &&
+                  (winner === "Draw" ? <>Draw</> : <>Winner: {winner}</>)}
+              </p>
             </div>
             {showReplay && !replayRequest && (
               <div>
-                <button className='button-replay-caro' onClick={handleReplay}>Replay</button>
+                <button
+                  className="button-replay-caro-caro3x3"
+                  onClick={handleReplay}
+                >
+                  Replay
+                </button>
               </div>
             )}
             {replayRequest && (
@@ -200,10 +209,12 @@ function CaroGame() {
               </div>
             )}
           </div>
-          <div className="game-board">
+          <div className="game-board-caro3x3">
             <Board squares={board} onClick={(i) => handleClick(i)} />
           </div>
-          <button onClick={handleClickk} className="navigate-button2">Home</button>
+          <button onClick={handleClickk} className="navigate-button-caro3x3">
+            Home
+          </button>
         </div>
       )}
     </div>
@@ -212,10 +223,14 @@ function CaroGame() {
 
 function Board({ squares, onClick }) {
   return (
-    <div className="board">
+    <div className="board-caro3x3">
       {squares.map((square, index) => (
-        <button key={index} className="square" onClick={() => onClick(index)}>
-          <span className="XO">{square}</span>
+        <button
+          key={index}
+          className="square-caro3x3"
+          onClick={() => onClick(index)}
+        >
+          <span className="XO-caro3x3">{square}</span>
         </button>
       ))}
     </div>
