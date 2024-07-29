@@ -3,6 +3,7 @@ import { Form, Input, Button, message } from "antd";
 import axios from "axios";
 import config from "../../config/config";
 import { useNavigate } from "react-router-dom";
+import Header from "../Layout/Header";
 
 const Register = () => {
   const [form] = Form.useForm();
@@ -36,6 +37,7 @@ const Register = () => {
 
   return (
     <div style={{ maxWidth: "300px", margin: "auto" }}>
+      <Header />
       <h2>Register</h2>
       <Form
         form={form}
