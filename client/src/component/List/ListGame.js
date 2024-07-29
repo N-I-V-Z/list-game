@@ -70,6 +70,14 @@ function ListGame() {
           />
           <div className="game-link-text">2048</div>
         </Link>
+        <Link to="/caro-track" className="game-link">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpFqea-csU1y1tqzpSP9_AvqahPnno-ZZ-ZA&s"
+            alt="Caro Track"
+            className="game-image"
+          />
+          <div className="game-link-text">Caro Track</div>
+        </Link>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import MineSweeper from "./component/Games/MineSweeper/MineSweeper";
 import Game2048 from "./component/Games/2048/Game2048";
 import Register from "./component/Auth/Register";
 import Login from "./component/Auth/Login";
+import CaroTrack from "./component/Games/CaroTrack/CaroTrack";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/2048" element={<Game2048 />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/caro-track" element={<CaroTrack />} />
         </Routes>
       </div>
     </Router>

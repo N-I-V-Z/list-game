@@ -1,0 +1,97 @@
+.game-caro-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.game-board-caro-track {
+  display: grid;
+  grid-template-columns: repeat(4, 100px); /* Thay đổi số lượng cột từ 3 thành 4 */
+  grid-gap: 5px;
+}
+
+.square-caro-track {
+  width: 100px;
+  height: 100px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.XO-caro-track {
+  background: linear-gradient(135deg, #f203c6, #ea00ff, #054cf0, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-caro-track {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+.choose-room-caro-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.choose-room-caro-track input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.choose-room-caro-track button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.choose-room-caro-track ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.choose-room-caro-track li {
+  margin: 5px 0;
+}
+
+.game-page-caro-track {
+  height: 100%;
+}
+
+.button-replay-caro-caro-track {
+  border-radius: 5%;
+  border: none;
+  height: 30px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+
+.navigate-button-caro-track {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Màu nền xanh dương */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.navigate-button-caro-track:hover {
+  background-color: #2980b9; /* Màu nền xanh đậm hơn khi di chuột qua */
+  transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
+}
+
+.navigate-button-caro-track:active {
+  transform: scale(0.95); /* Hiệu ứng khi nhấn nút */
+}
