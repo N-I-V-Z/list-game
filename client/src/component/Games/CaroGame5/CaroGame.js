@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { message } from "antd";
 import "./CaroGame.css";
-import config from "../../config/config";
+import config from "../../../config/config";
 import { useNavigate } from 'react-router-dom';
 
 const socket = io(`${config.API_ROOT}`);

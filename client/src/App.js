@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import CaroGame from "./component/CaroGame3x3/CaroGame";
+import CaroGame from "./component/Games/CaroGame3x3/CaroGame";
 import ListGame from "./component/List/ListGame";
-import SnakeGame from "./component/SnakeGame/SnakeGame";
-import CaroGame5 from "./component/CaroGame5/CaroGame";
-import ColorTest from "./component/ColorTest/ColorTest";
-import BlockStackingGame from "./component/Block Stacking Game/BlockStackingGame";
-import MineSweeper from "./component/MineSweeper/MineSweeper";
-import Game2048 from "./component/2048/Game2048";
+import SnakeGame from "./component/Games/SnakeGame/SnakeGame";
+import CaroGame5 from "./component/Games/CaroGame5/CaroGame";
+import ColorTest from "./component/Games/ColorTest/ColorTest";
+import BlockStackingGame from "./component/Games/Block Stacking Game/BlockStackingGame";
+import MineSweeper from "./component/Games/MineSweeper/MineSweeper";
+import Game2048 from "./component/Games/2048/Game2048";
 import Register from "./component/Auth/Register";
 import Login from "./component/Auth/Login";
 
