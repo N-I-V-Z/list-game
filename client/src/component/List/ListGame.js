@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ListGame.css";
+import Header from "../Layout/Header";
 
 function ListGame() {
+
+
   return (
     <div>
-      <div className="welcome-message">
-        Chào mừng bạn đến thế giới game của chúng tôi
-      </div>
+      <Header />
       <div className="list-game-container">
         <Link to="/caro-game-3x3" className="game-link">
           <img
