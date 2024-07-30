@@ -22,21 +22,19 @@ const Login = () => {
         password: values.password,
       });
       if (response.data.err === 0) {
-
         message.success(response.data.mes);
 
         store.dispatch({
           type: "LOGIN",
           payload: {
             isLoggedIn: true,
-            userName: response.data.data.data.username,
+            username: response.data.data.data.username,
             access_token: response.data.data.access_token,
             refresh_token: response.data.data.refresh_token,
           },
         });
 
         navigate("/");
-
       } else {
         message.error(response.data.mes);
       }
