@@ -37,10 +37,16 @@ export const getAccessToken = async () => {
       } else {
         // Xử lý khi refresh token không hợp lệ
         message.error("Session expired, please log in again");
+        store.dispatch({
+          type: "LOGOUT",
+        });
         window.location.href = "/login";
       }
     } catch (error) {
       message.error("Error refreshing token. Please log in again.");
+      store.dispatch({
+        type: "LOGOUT",
+      });
       window.location.href = "/login";
     }
   }

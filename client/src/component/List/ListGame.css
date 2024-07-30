@@ -6,6 +6,7 @@
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   flex-direction: row;
   flex-wrap: wrap;
+  overflow: auto;
   align-content: center;
   align-items: center;
 }

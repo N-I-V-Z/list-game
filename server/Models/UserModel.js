@@ -7,10 +7,10 @@ const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true
-    }, // vì không có đến 2 trường nên cần phải khai báo dạng Object
+    },
     password: {
         type: String
-    }, // vì chỉ có 1 trường type nên có thể ghi gọn
+    },
     role: {
         type: Number
     }
