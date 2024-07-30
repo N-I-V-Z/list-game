@@ -1,15 +1,19 @@
 import axios from 'axios';
-import { message } from 'antd';
 import config from '../config/config';
 import { getAccessToken } from './auth';
 
+// trang này để tạo hàm gọi api qua axios có kiểm tra token
+
+// set api root 
 const axiosInstance = axios.create({
   baseURL: config.API_ROOT,
 });
 
+// xử lý request
 axiosInstance.interceptors.request.use(async (config) => {
   const token = await getAccessToken();
   if (token) {
+    // set token vào headers
     config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;
@@ -17,6 +21,7 @@ axiosInstance.interceptors.request.use(async (config) => {
   return Promise.reject(error);
 });
 
+// xử lý response
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
