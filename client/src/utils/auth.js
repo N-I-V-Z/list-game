@@ -12,24 +12,27 @@ export const isTokenExpired = (token) => {
 };
 
 export const getAccessToken = async () => {
-  let accessToken = store.getState().access_token;
+  const state = store.getState();
+  let accessToken = state.access_token;
   if (isTokenExpired(accessToken)) {
     // Làm mới access token
-    const refreshToken = store.getState().refresh_token;
+    const refreshToken = state.refresh_token;
 
     try {
       const response = await axios.post(
         `${config.API_ROOT}/api/users/refresh-token`,
         { token: refreshToken }
       );
-      console.log("24 ", response);
-      if (response.data.err === 0) {
-        accessToken = response.data.access_token;
-        const state = store.getState();
-        state.access_token = accessToken;
+      if (response.data !== null) {
+        accessToken = response.data;
         store.dispatch({
           type: "LOGIN",
-          payload: state,
+          payload: {
+            isLoggedIn: true,
+            username: state.username,
+            access_token: accessToken,
+            refresh_token: state.refresh_token,
+          },
         });
       } else {
         // Xử lý khi refresh token không hợp lệ
