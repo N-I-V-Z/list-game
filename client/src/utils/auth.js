@@ -4,6 +4,7 @@ import config from "../config/config";
 import { message } from "antd";
 import { store } from "..";
 
+// hàm để kiểm tra token hết hạn
 export const isTokenExpired = (token) => {
   if (!token) return true;
   const payload = JSON.parse(atob(token.split(".")[1]));
@@ -11,18 +12,23 @@ export const isTokenExpired = (token) => {
   return Date.now() > expirationTime;
 };
 
+// làm để lấy access token nếu token hết hạn
 export const getAccessToken = async () => {
   const state = store.getState();
+  // lấy token cũ được lưu
   let accessToken = state.access_token;
+  // kiểm tra hết hạn
   if (isTokenExpired(accessToken)) {
-    // Làm mới access token
+    // lấy refresh token
     const refreshToken = state.refresh_token;
 
     try {
+      // gọi api để lấy access token mới
       const response = await axios.post(
         `${config.API_ROOT}/api/users/refresh-token`,
         { token: refreshToken }
       );
+      // lấy token mới và lưu lại
       if (response.data !== null) {
         accessToken = response.data;
         store.dispatch({
@@ -37,6 +43,7 @@ export const getAccessToken = async () => {
       } else {
         // Xử lý khi refresh token không hợp lệ
         message.error("Session expired, please log in again");
+        // logout
         store.dispatch({
           type: "LOGOUT",
         });
