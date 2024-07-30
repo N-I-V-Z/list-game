@@ -3,8 +3,11 @@ import { Form, Input, Button, message } from "antd";
 import axios from "axios";
 import config from "../../config/config";
 import Header from "../Layout/Header";
+import { useNavigate } from "react-router-dom";
+import { store } from "../../index";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
@@ -19,19 +22,34 @@ const Login = () => {
         password: values.password,
       });
       if (response.data.err === 0) {
+
         message.success(response.data.mes);
+
+        store.dispatch({
+          type: "LOGIN",
+          payload: {
+            isLoggedIn: true,
+            userName: response.data.data.data.username,
+            access_token: response.data.data.access_token,
+            refresh_token: response.data.data.refresh_token,
+          },
+        });
+
+        navigate("/");
+
       } else {
         message.error(response.data.mes);
       }
     } catch (error) {
+      console.log(error);
       message.error(error.response.data.mes);
     }
   };
 
   return (
     <div style={{ maxWidth: "300px", margin: "auto" }}>
-      <Header/>
-      <h2>Register</h2>
+      <Header />
+      <h2>Login</h2>
       <Form
         form={form}
         name="register"

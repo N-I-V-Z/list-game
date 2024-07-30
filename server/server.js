@@ -4,6 +4,7 @@ const socketIo = require("socket.io");
 const cors = require("cors");
 const connectDb = require("./Services/ConnectDbService");
 const initRouters = require("./Router");
+require("dotenv").config();
 
 // connect mongoDb
 connectDb();
@@ -317,6 +318,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => {
+server.listen(process.env.PORT || 5000, () => {
   console.log("listening on http://localhost:5000");
 });

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import {store} from "./index";
 import CaroGame from "./component/Games/CaroGame3x3/CaroGame";
 import ListGame from "./component/List/ListGame";
 import SnakeGame from "./component/Games/SnakeGame/SnakeGame";
@@ -14,6 +15,14 @@ import Login from "./component/Auth/Login";
 import CaroTrack from "./component/Games/CaroTrack/CaroTrack";
 
 function App() {
+
+  const [flagReRender, setFlagReRender] = useState(false);
+
+  // flagReRender là 1 useState, nên khi nó thay đổi thì Component App sẽ thay đổi kéo theo tất cả các trang thay đổi theo (thay đổi ở đây là cập nhập lại view)
+  store.subcribe(function() {
+    setFlagReRender(!flagReRender);
+  });
+
   return (
     <Router>
       <div>
