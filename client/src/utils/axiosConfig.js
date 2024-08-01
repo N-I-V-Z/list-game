@@ -14,7 +14,7 @@ axiosInstance.interceptors.request.use(async (config) => {
   const token = await getAccessToken();
   if (token) {
     // set token vào headers
-    config.headers['Authorization'] = `Bearer ${token}`;
+    config.headers['authorization'] = `Bearer ${token}`;
   }
   return config;
 }, (error) => {
