@@ -312,7 +312,6 @@ io.on("connection", (socket) => {
         if (rooms[room].players.length === 0) {
           delete rooms[room];
         }
-        console.log("user disconnected:", socket.id);
       }
     });
   });

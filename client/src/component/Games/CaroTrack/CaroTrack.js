@@ -5,6 +5,9 @@ import { message } from "antd";
 import "./CaroTrack.css";
 import config from "../../../config/config";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../utils/axiosConfig";
+import { store } from "../../..";
+import Rank from "../../Top10/Rank";
 
 const socket = io(`${config.API_ROOT}`);
 
@@ -18,6 +21,8 @@ function CaroTrack() {
   const [winner, setWinner] = useState("");
   const [showReplay, setShowReplay] = useState(false);
   const [replayRequest, setReplayRequest] = useState(false);
+
+  const user = store?.getState()?.username;
 
   // Lấy danh sách phòng game loại caro-track hợp lệ để vào
   useEffect(() => {
@@ -175,6 +180,17 @@ function CaroTrack() {
 
   // hiện thông báo khi có người chiến thắng hoặc hòa
   useEffect(() => {
+    const addPoint = async () => {
+      try {
+        await axiosInstance.post("/api/scores/add-score", {
+          game: "Caro Track",
+          username: user,
+          score: 1,
+        });
+      } catch (error) {
+        console.log("Fail to add point");
+      }
+    };
     const winner = calculateWinner(board);
     if (winner) {
       if (winner === "Draw") {
@@ -183,6 +199,7 @@ function CaroTrack() {
         message.success(`Draw`);
       } else {
         setWinner(winner);
+        if (player === winner && user) addPoint();
         setShowReplay(true);
         message.success(`${winner} Wins`);
       }
@@ -206,6 +223,8 @@ function CaroTrack() {
     <div className="game-page-caro-track">
       {!roomFull ? (
         <div className="choose-room-caro-track">
+          <Rank game={"Caro Track"} />
+
           <button onClick={handleClickk} className="navigate-button-caro-track">
             Home
           </button>
