@@ -129,22 +129,6 @@ function CaroGame() {
 
   // hiện thông báo khi có người chiến thắng hoặc hòa
   useEffect(() => {
-    const winner = calculateWinner(board);
-    if (winner) {
-      if (winner === "Draw") {
-        setWinner("Draw");
-        setShowReplay(true);
-        message.success(`Draw`);
-      } else {
-        setWinner(winner);
-
-        setShowReplay(true);
-        message.success(`${winner} Wins`);
-      }
-    }
-  }, [board]);
-
-  useEffect(() => {
     const addPoint = async () => {
       try {
         await axiosInstance.post("/api/scores/add-score", {
@@ -156,10 +140,20 @@ function CaroGame() {
         console.log("Fail to add point");
       }
     };
-    if (user && winner === player) {
-      addPoint();
+    const winner = calculateWinner(board);
+    if (winner) {
+      if (winner === "Draw") {
+        setWinner("Draw");
+        setShowReplay(true);
+        message.success(`Draw`);
+      } else {
+        setWinner(winner);
+        if (player === winner && user) addPoint();
+        setShowReplay(true);
+        message.success(`${winner} Wins`);
+      }
     }
-  }, [winner]);
+  }, [board]);
 
   const handleReplay = () => {
     socket.emit("replay");
@@ -176,10 +170,10 @@ function CaroGame() {
   };
   return (
     <div className="game-page-caro3x3">
-      <Rank game={"Caro 3x3"} />
-
       {!roomFull ? (
         <div className="choose-room-caro3x3">
+          <Rank game={"Caro 3x3"} />
+
           <button onClick={handleClickk} className="navigate-button-caro3x3">
             Home
           </button>

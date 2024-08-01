@@ -23,24 +23,26 @@ function Rank({ game }) {
 
   return (
     <div className="rank">
-      <table>
-        <thead>
-          <tr>
-            <th>Top</th>
-            <th>Username</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rank.map((r, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{r.username}</td>
-              <td>{r.score}</td>
+      {rank.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Top</th>
+              <th>Username</th>
+              <th>Score</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rank.map((r, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{r.username}</td>
+                <td>{r.score}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
