@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "66a8f59d7a8895c86e1e9eb4"
+  },
+  "game": "Caro 3x3",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a8f5b97a8895c86e1e9eb6"
+  },
+  "game": "Caro 5",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a8f5ce7a8895c86e1e9eb8"
+  },
+  "game": "Snake",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a8f5e97a8895c86e1e9eba"
+  },
+  "game": "Caro Track",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a8f63dce1459b2ffe16c8d"
+  },
+  "game": "Block Stacking",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a8f66cce1459b2ffe16c8f"
+  },
+  "game": "2048",
+  "__v": 0
+}]

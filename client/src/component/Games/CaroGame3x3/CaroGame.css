@@ -28,12 +28,15 @@
 
 .board-caro3x3 {
   display: flex;
+
   flex-wrap: wrap;
-  width: 310px; /* Width of the board including gaps */
+  width: 300px; /* Width of the board including gaps */
 }
 
 .choose-room-caro3x3 {
   display: flex;
+  width: 60%;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -63,6 +66,7 @@
 }
 
 .game-page-caro3x3 {
+  display: flex;
   height: 100%;
 }
 

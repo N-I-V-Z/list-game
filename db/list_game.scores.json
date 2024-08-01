@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "66a901e07a31bea9032c97d5"
+  },
+  "username": "1",
+  "score": 15,
+  "game": "2048",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66ab39f8d4883e3b72d8cab0"
+  },
+  "username": "1",
+  "score": 58,
+  "game": "Caro 3x3",
+  "__v": 0
+}]
