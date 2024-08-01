@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../utils/axiosConfig";
 import "./Rank.css";
+import axios from "axios";
+import config from "../../config/config";
 
 function Rank({ game }) {
   const [rank, setRank] = useState([]);
@@ -8,8 +9,8 @@ function Rank({ game }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.post(
-          "/api/scores/get-top-10-score-by-game",
+        const response = await axios.post(
+          `${config.API_ROOT}/api/scores/get-top-10-score-by-game`,
           { game }
         );
         setRank(response.data.data);
