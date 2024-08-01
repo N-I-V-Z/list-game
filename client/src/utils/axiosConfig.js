@@ -11,10 +11,10 @@ const axiosInstance = axios.create({
 
 // xử lý request
 axiosInstance.interceptors.request.use(async (config) => {
-  const token = await getAccessToken();
+  const token = await getAccessToken(); // lấy token của user
   if (token) {
     // set token vào headers
-    config.headers['authorization'] = `Bearer ${token}`;
+    config.headers['authorization'] = `Bearer ${token}`; // nếu có token thì gửi kèm token 
   }
   return config;
 }, (error) => {
@@ -36,4 +36,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+export default axiosInstance; // muốn dùng thì chỉ cần import axiosInstance và dùng như axios thông thường (.axiosInstance.get(), .post(), .put(), .delete())
