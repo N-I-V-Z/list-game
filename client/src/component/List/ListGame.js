@@ -78,6 +78,14 @@ function ListGame() {
           />
           <div className="game-link-text">Caro Track</div>
         </Link>
+        <Link to="/DoodleJump" className="game-link">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/hellomilkyshop-4cf00.appspot.com/o/image_games%2Fdoodler-right.png?alt=media&token=fa02e1bc-c46b-43e8-b2a6-8d0fcbc6162e"
+            alt="Doodle Jump"
+            className="game-image"
+          />
+          <div className="game-link-text">Doodle Jump</div>
+        </Link>
       </div>
     </div>
   );
