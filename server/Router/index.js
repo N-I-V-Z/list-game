@@ -1,12 +1,14 @@
 const userRoute = require("./userRoute");
+const gameRoute = require("./gameRoute");
+const scoreRoute = require("./scoreRoute");
 
 const initRouters = (app) => {
-
-  app.get("/api/some-endpoint", (req, res) => {
-    res.send("thanh cong")
-  })
   
   app.use("/api/users", userRoute);
+
+  app.use("/api/games", gameRoute);
+
+  app.use("/api/scores", scoreRoute);
 
   app.get("/", (req, res) => {
     res.send("Server on");

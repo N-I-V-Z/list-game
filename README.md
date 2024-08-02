@@ -30,6 +30,13 @@ Test Color Game là trò chơi đơn giản để kiểm tra khả năng phân b
 
 Block Game là một trò chơi cổ điển với lối chơi đơn giản nhưng gây nghiện. Trong trò chơi này, người chơi cần xếp các khối hình vào các vị trí hợp lý để tạo thành các hàng hoặc cột hoàn chỉnh. Khi một hàng hoặc cột được hoàn thành, nó sẽ biến mất và người chơi sẽ được điểm. Mục tiêu là đạt điểm cao nhất có thể trước khi khối hình không còn đủ chỗ để xếp.
 
+### 7. 2048 Game
+
+2048 là một trò chơi puzzle, trong đó người chơi phải di chuyển các ô có số trên lưới 4x4 để kết hợp các ô giống nhau. Khi hai ô có cùng số chạm nhau, chúng hợp lại và tạo thành một ô với giá trị gấp đôi. Mục tiêu là đạt được ô có giá trị 2048. 
+
+### 8. Caro Track Game
+Caro Track Game là một biến thể của trò chơi Caro truyền thống, ở trò chơi này, người chơi sẽ chơi trên bàn cờ 4x4, khi đặt đủ 1 hàng, cột hoặc 1 đường chéo thì người chơi sẽ chiến thắng. Không những thế sau mỗi nước đi, thì bàn cờ sẽ đảo vị trí theo ngược chiều kim đồng hồ ở cả 2 vòng của bàn 4x4.
+
 ## Cài Đặt
 
 Để chạy dự án này trên máy của bạn, hãy làm theo các bước sau:
@@ -92,6 +99,8 @@ Dự án sẽ chạy trên cổng mặc định `localhost:5000`.
 - **Minesweeper**: Trò chơi mở ô mà không chạm phải mìn.
 - **Test Color Game**: Trò chơi kiểm tra khả năng phân biệt màu sắc.
 - **Block Game**: Trò chơi xếp hình.
+- **2048 Game**: Trò chơi puzzle.
+- **Caro Track Game**: Trò chơi caro với 4 vị trí liên tiếp và bàn cờ đổi vị trí.
 
 ## Cập Nhật
 

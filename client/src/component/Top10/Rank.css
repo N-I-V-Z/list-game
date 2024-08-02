@@ -1,0 +1,39 @@
+.rank {
+  width: 40%;
+  max-width: 600px;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.rank table {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.rank th, .rank td {
+  text-align: left;
+  padding: 12px;
+}
+
+.rank th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.rank tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.rank th, .rank td {
+  border-bottom: 1px solid #ddd;
+}
+
+.rank td {
+  font-size: 14px;
+}
+
+.rank th {
+  font-size: 16px;
+}

@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu } from "antd";
 import { store } from "../../index";
 import "./Header.css";
-import axiosInstance from '../../utils/axiosConfig';
 
 function Header() {
   const location = useLocation();
@@ -16,11 +15,6 @@ function Header() {
       type: "LOGOUT",
     });
   };
-
-  const handlerefresh = async () => {
-    const response = await axiosInstance.get('/api/some-endpoint')
-    console.log(response);
-  }
 
   return (
     <div className="header-container">
@@ -46,9 +40,6 @@ function Header() {
             <div onClick={handleLogout}>Logout</div>
           </Menu.Item>
         )}
-        <Menu.Item>
-            <div onClick={handlerefresh}>test</div>
-          </Menu.Item>
       </Menu>
     </div>
   );

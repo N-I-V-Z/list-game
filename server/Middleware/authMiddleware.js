@@ -19,3 +19,8 @@ const authorizeRoles = (...roles) => {
     next();
   };
 };
+
+module.exports = {
+  authenticateToken,
+  authorizeRoles,
+};

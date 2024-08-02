@@ -5,6 +5,9 @@ import { message } from "antd";
 import "./CaroGame.css";
 import config from "../../../config/config";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../utils/axiosConfig";
+import { store } from "../../..";
+import Rank from "../../Top10/Rank";
 
 // Khởi tạo kết nối Socket.IO
 const socket = io(`${config.API_ROOT}`);
@@ -19,6 +22,8 @@ function CaroGame() {
   const [winner, setWinner] = useState("");
   const [showReplay, setShowReplay] = useState(false);
   const [replayRequest, setReplayRequest] = useState(false);
+
+  const user = store?.getState()?.username;
 
   // Lấy danh sách phòng game loại caro3x3 hợp lệ để vào
   useEffect(() => {
@@ -124,6 +129,17 @@ function CaroGame() {
 
   // hiện thông báo khi có người chiến thắng hoặc hòa
   useEffect(() => {
+    const addPoint = async () => {
+      try {
+        await axiosInstance.post("/api/scores/add-score", {
+          game: "Caro 3x3",
+          username: user,
+          score: 1,
+        });
+      } catch (error) {
+        console.log("Fail to add point");
+      }
+    };
     const winner = calculateWinner(board);
     if (winner) {
       if (winner === "Draw") {
@@ -132,6 +148,7 @@ function CaroGame() {
         message.success(`Draw`);
       } else {
         setWinner(winner);
+        if (player === winner && user) addPoint();
         setShowReplay(true);
         message.success(`${winner} Wins`);
       }
@@ -155,9 +172,12 @@ function CaroGame() {
     <div className="game-page-caro3x3">
       {!roomFull ? (
         <div className="choose-room-caro3x3">
+          <Rank game={"Caro 3x3"} />
+
           <button onClick={handleClickk} className="navigate-button-caro3x3">
             Home
           </button>
+
           <h2>Choose or Create a Room</h2>
           <input
             type="text"
